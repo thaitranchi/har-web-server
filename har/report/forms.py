@@ -10,8 +10,8 @@ class ReportForm(forms.ModelForm):
             'longitude': forms.TextInput(attrs={'placeholder': 'Longitude', 'pattern': '(-|)\d{1,3}.\d+'}),
             'latitude': forms.NumberInput(attrs={'placeholder': 'Latitude', 'step': 'any'}),
             'altitude': forms.NumberInput(attrs={'placeholder': 'Altitude', 'step': 'any'}),
-            'accuracy': forms.NumberInput(attrs={'placeholder': 'Accuracy', 'step': 'any', 'title': 'A decimal number'
-}),        }
+            'accuracy': forms.NumberInput(attrs={'placeholder': 'Accuracy', 'step': 'any', 'title': 'A decimal number'}),
+        }
 
 class ConnectionForm(forms.Form):
     email = forms.EmailField(widget=forms.EmailInput(attrs={
