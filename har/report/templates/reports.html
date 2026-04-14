@@ -2,24 +2,33 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>HAR - My Reports</title>
     <link href="{% static 'css/reports.css' %}" rel="stylesheet"/>
     <script src="{% static 'js/reports.js' %}"></script>
+    <meta charset="UTF-8">
 </head>
 <body>
-    <div class="list-container">
-        <img class="logo" src="{% static 'img/logo_har.2.0.png' %}">
+    <div class="flex-container"> <img class="logo" src="{% static 'img/logo_har.2.0.png' %}" alt="Logo">
+        
         {% for report in reports %}
-        <div class="report-item">
-            <img class="ic-heritage" src="{% static 'img/ic_heritage.png' %}"/>
-            <div class="info">
-                <strong>{{ report.name }}</strong>
+        <div class="report-container"> <img class="ic-heritage" src="{% static 'img/ic_heritage.png' %}" alt="Icon"/>
+            <div class="report-info"> <strong>{{ report.name }}</strong>
                 <p>({{ report.latitude }}, {{ report.longitude }}, {{ report.altitude }})</p>
             </div>
-            <button onclick="onclickEditReport({{report.id}})">Edit</button>
-            <button onclick="onclickDeleteReport({{report.id}})">Delete</button>
+            
+            <div class="edit-button" onclick="onclickEditReport({{report.id}})">
+                <img class="edit-icon" src="{% static 'img/edit-icon.png' %}" alt="Edit">
+            </div>
+            
+            <div class="delete-button" onclick="onclickDeleteReport({{report.id}})">
+                <img class="delete-icon" src="{% static 'img/delete-icon.png' %}" alt="Delete">
+            </div>
         </div>
+        {% empty %}
+        <p>No reports found. Start by adding one below!</p>
         {% endfor %}
-        <button class="add-btn" onclick="onclickAddReport()">Add Report</button>
+
+        <button class="add-button" onclick="onclickAddReport()">Add Report</button>
     </div>
 </body>
 </html>
