@@ -1,12 +1,14 @@
-
-function onclickEditReport(id) {
-    window.location.replace('http://127.0.0.1:8000/report/'+String(id)+'/')
+function onclickEditReport(reportId) {
+    // Redirects to the update view
+    window.location.href = '/report/' + reportId;
 }
 
-function onclickDeleteReport(id) {
-    window.location.replace('http://127.0.0.1:8000/report/'+String(id)+'/deletion')
+function onclickDeleteReport(reportId) {
+    // Redirects to the deletion view (GET method as per Waypoint 9)
+    window.location.href = '/report/' + reportId + '/deletion';
 }
 
 function onclickAddReport() {
-    window.location.replace('http://127.0.0.1:8000/report/')
+    // Redirects to the creation view
+    window.location.href = '/report';
 }
