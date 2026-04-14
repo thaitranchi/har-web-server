@@ -1,78 +1,85 @@
+/* har/report/static/css/reports.css */
 
 body {
     background-color: rgb(236, 41, 66);
+    margin: 0;
+    font-family: Arial, sans-serif;
 }
 
 p {
     color: white;
     font-size: small;
-    font-stretch: expanded;
+    margin: 0; /* Prevents paragraph margins from breaking the row height */
 }
 
 .flex-container {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 20px;
 }
 
 .logo {
     margin-top: 5%;
     margin-bottom: 50px;
-    width: 200px;
-    height: 200px;
+    width: 150px; /* Adjusted height/width for aspect ratio */
+    height: auto;
 }
 
-.add-button {
-    margin-top: 20px;
-    width: 420px;
-    padding: 8px;
-    border-radius: 5px;
-    background: dodgerblue;
-    color: white;
-    border: none;
-}
-
+/* The horizontal list item */
 .report-container { 
     display: flex;
     flex-direction: row;
     align-items: center;
     width: 420px;
-    height: 40px;
+    height: 60px; /* Increased height slightly for breathing room */
     margin-top: 10px;
-}
-.report-info {
-    margin-top: -2px;
-    padding-left: 5px;
-    width: 330px;
-}
-
-.delete-icon {
-    width: 20px;
-    height: 20px;
-}
-
-.edit-icon {
-    width: 20px;
-    height: 20px;
+    background-color: rgba(255, 255, 255, 0.1); /* Subtle background for list items */
+    padding: 5px 10px;
+    border-radius: 4px;
 }
 
 .ic-heritage {
     width: 40px;
     height: 40px;
-    
+    flex-shrink: 0;
 }
 
-.edit-button {
-    margin-right: 5px;
-    width: 20px;
-    height: 20px;
+.report-info {
+    padding-left: 10px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.delete-button {
-    width: 20px;
-    height: 20px;   
+/* Container for the action icons */
+.edit-button, .delete-button {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.1s;
 }
-.messages {
-    margin-top: -5px;
-    margin-left: -330px;
+
+.edit-button:hover, .delete-button:hover {
+    transform: scale(1.1);
+}
+
+.add-button {
+    margin-top: 30px;
+    width: 420px;
+    padding: 12px;
+    border-radius: 5px;
+    background: dodgerblue;
+    color: white;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.add-button:hover {
+    background: #1e70bf;
 }
