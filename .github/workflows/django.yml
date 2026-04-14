@@ -5,9 +5,10 @@ on:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
+
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-  
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -18,22 +19,20 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
-        python-version: '3.12' # Recommended for Django 5.x
+        python-version: '3.12'
 
     - name: Install Pipenv
       run: pip install pipenv
 
-  - name: Install Dependencies
-        run: |
-          pip install pipenv
-          # --deploy ensures the Pipfile.lock is up to date
-          # --dev includes testing tools like coverage or pytest
-          pipenv install --dev --deploy 
-  
-      - name: Check for Missing Migrations
-        run: |
-          pipenv run python manage.py makemigrations --check --dry-run
-  
-      - name: Run Tests
-        run: |
-          pipenv run python manage.py test report
+    - name: Install Dependencies
+      # Removed the trailing comment from the command line to prevent shell errors
+      run: |
+        pipenv install --dev --deploy
+
+    - name: Check for Missing Migrations
+      run: |
+        pipenv run python manage.py makemigrations --check --dry-run
+
+    - name: Run Tests
+      run: |
+        pipenv run python manage.py test report
