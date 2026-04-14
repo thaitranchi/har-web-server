@@ -1,1 +1,29 @@
-__pycache__
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+.venv
+env/
+venv/
+ENV/
+
+# --- Pipenv ---
+# We keep Pipfile and Pipfile.lock, but ignore the virtualenv
+.venv/
+
+# --- Django ---
+db.sqlite3
+db.sqlite3-journal
+media/
+staticfiles/
+.env
+
+# --- OS / Editors ---
+.DS_Store
+.vscode/
+.idea/
+*.swp
+
+# --- Heritage at Risk Specific ---
+# Ignore the generated test report files if any
+*.log
