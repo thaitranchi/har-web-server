@@ -1,37 +1,68 @@
+/* Apply to everything for easier layout management */
+* {
+    box-sizing: border-box;
+}
 
 body {
     background-color: rgb(236, 41, 66);
+    margin: 0;
+    font-family: Arial, sans-serif;
 }
 
 p {
     color: white;
     font-size: small;
     font-stretch: expanded;
+    text-align: center;
 }
-input {
+
+/* Base style for all text/number inputs */
+input[type="text"], 
+input[type="number"] {
     margin-top: 20px;
     width: 400px;
-    padding: 5px;
+    padding: 10px; /* Slightly more padding for better readability */
+    border: none;
+    border-radius: 4px;
 }
 
 .flex-container {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    min-height: 100vh;
 }
 
 .logo {
     margin-top: 5%;
-    width: 200px;
-    height: 200px;
+    width: 180px; /* Adjusted slightly based on your reference image */
+    height: auto;
 }
 
+/* The Submit/Update button */
 .connect {
-    margin-top: 20px;
-    width: 426px;
-    padding: 8px;
+    margin-top: 25px;
+    width: 400px; /* Matched to input width for a clean vertical line */
+    padding: 12px;
     border-radius: 5px;
     background: dodgerblue;
     color: white;
     border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
+}
+
+.connect:hover {
+    background: #1e70bf; /* Darker blue on hover for better UX */
+}
+
+/* For Django error messages if they appear */
+.messages {
+    list-style: none;
+    padding: 0;
+    color: #fffde7;
+    font-size: 0.9em;
+    margin-top: 15px;
 }
