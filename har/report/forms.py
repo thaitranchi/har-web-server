@@ -6,8 +6,8 @@ class ReportForm(forms.ModelForm):
         model = Report
         fields = ['name', 'longitude', 'latitude', 'altitude', 'accuracy']
         widgets = {
-            'name': forms.TextInput(attrs={'placeholder': 'Report name'}),
-            'longitude': forms.NumberInput(attrs={'placeholder': 'Longitude', 'step': 'any'}),
+            'name': forms.TextInput(attrs={'placeholder': 'Report name', 'class': 'my-input-class'}),
+            'longitude': forms.TextInput(attrs={'placeholder': 'Longitude', 'pattern': '(-|)\d{1,3}.\d+'}),
             'latitude': forms.NumberInput(attrs={'placeholder': 'Latitude', 'step': 'any'}),
             'altitude': forms.NumberInput(attrs={'placeholder': 'Altitude', 'step': 'any'}),
             'accuracy': forms.NumberInput(attrs={'placeholder': 'Accuracy', 'step': 'any'}),
