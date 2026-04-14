@@ -17,6 +17,6 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('admin/', admin.site.status),
+    path('admin/', admin.site.urls),
     path('', include('har.report.urls')), # Include your app URLs
 ]
