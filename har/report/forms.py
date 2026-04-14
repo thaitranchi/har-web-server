@@ -14,5 +14,12 @@ class ReportForm(forms.ModelForm):
         }
 
 class ConnectionForm(forms.Form):
-    email = forms.EmailField(widget=forms.EmailInput(attrs={'placeholder': 'Email Address'}))
-    password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Password'}))
+    email = forms.EmailField(widget=forms.EmailInput(attrs={
+        'placeholder': 'Email Address',
+        'id': 'email' # Optional, but good for consistency
+    }))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={
+        'placeholder': 'Password',
+        'id': 'password', # CRITICAL: This allows document.getElementById("password") to work
+        'class': 'password'
+    }))
