@@ -15,7 +15,7 @@ The Heritage at Risk (HAR) web server is a full-stack Django application designe
 
 1.  **Clone the Repository:**
     ```bash
-    git clone [<your-repo-link>](https://github.com/thaitranchi/har-web-server)
+    git clone https://github.com/thaitranchi/har-web-server
     cd har-web-server
     ```
 
