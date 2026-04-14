@@ -32,10 +32,7 @@ jobs:
     - name: Check for Missing Migrations
       run: |
         pipenv run python manage.py makemigrations --check --dry-run
-      # If manage.py is inside the 'har' folder, add this:
-      working-directory: ./har
       
     - name: Run Tests
       run: |
         pipenv run python manage.py test report
-      working-directory: ./har
