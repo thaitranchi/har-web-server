@@ -1,52 +1,78 @@
-# Har Web Server
+# Heritage at Risk (HAR) Web Server
 
-## Project Documentation
+The Heritage at Risk (HAR) web server is a full-stack Django application designed to document and track cultural heritage sites facing various threats. This project demonstrates a robust implementation of user authentication, automatic account provisioning, and secure data ownership.
 
-### Overview
-Har Web Server is a lightweight and high-performance web server written in [Programming Language]. It aims to provide a platform for serving static and dynamic content efficiently.
+## 🚀 Key Features
 
-### Features
-- Fast response times
-- Support for multiple protocols
-- Easy to configure
-- Lightweight and resource-friendly
+* **Unified Connection Flow:** A seamless "Connection" procedure that merges login and signup into a single interaction. New users are automatically registered upon their first successful form submission.
+* **Data Sovereignty:** A strict security model where users can only view, edit, or delete reports they have personally created.
+* **Coordinate Precision:** Specialized validation for Latitude, Longitude, and Altitude using frontend regex patterns and backend numeric verification.
+* **Chronological Journaling:** Automated timestamping and ordering of heritage reports for better historical tracking and list management.
 
-### Installation
-To install Har Web Server, follow these steps:
+---
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/thaitranchi/har-web-server.git
-   cd har-web-server
-   ```
+## 🛠️ Installation & Setup
 
-2. Install dependencies:
-   ```bash
-   [Dependency Installation Command]
-   ```
+1.  **Clone the Repository:**
+    ```bash
+    git clone [<your-repo-link>](https://github.com/thaitranchi/har-web-server)
+    cd har-web-server
+    ```
 
-3. Run the server:
-   ```bash
-   [Server Startup Command]
-   ```
+2.  **Environment Setup:**
+    Ensure Django is installed in your environment:
+    ```bash
+    pip install django
+    ```
 
-### Usage
-To use the Har Web Server, follow these instructions:
+3.  **Database Configuration:**
+    Initialize the SQLite database and apply the `Report` model migrations:
+    ```bash
+    python manage.py makemigrations report
+    python manage.py migrate
+    ```
 
-1. Open your web browser.
-2. Navigate to `http://localhost:[port]`.
-3. Enjoy your content!
+4.  **Run Application:**
+    ```bash
+    python manage.py runserver
+    ```
+    Access the application at `http://127.0.0.1:8000/`.
 
-### Configuration
-Customize the server settings by editing the `config.json` file. Key parameters include:
-- `port`: The port number on which the server listens.
-- `document_root`: The directory from which to serve files.
+---
 
-### Contributing
-Contributions are welcome! Please fork the repository and submit a pull request for any changes.
+## 📁 Architecture Overview
 
-### License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+* `har/report/models.py`: Defines the `Report` schema with a `ForeignKey` relationship to the Django `User` model.
+* `har/report/views.py`: Contains the core logic for the unified connection flow and authenticated CRUD operations.
+* `har/report/forms.py`: Django `ModelForm` and `Form` definitions with custom widgets, placeholders, and regex patterns.
+* `har/report/static/css/`: Modular UI styling including `connection.css`, `reports.css`, and `report_update.css`.
+* `har/report/templates/`: Django templates using block inheritance, static tag loading, and conditional logic.
 
-### Acknowledgements
-- [List any third-party resources or libraries used]
+---
+
+## 🧪 Quality Assurance
+
+To ensure the project meets the technical requirements of Waypoint 9, run the automated test suite:
+
+```bash
+python manage.py test report
+```
+
+**Testing coverage includes:**
+* Automatic user creation upon first connection.
+* Protection of private reports from unauthorized users (Ownership Isolation).
+* Anonymous user redirection for protected views via login decorators.
+* Frontend and backend form validation for coordinate data.
+
+---
+
+## 📝 Technical Stack
+
+* **Backend:** Python 3.x, Django 5.x
+* **Frontend:** HTML5, CSS3 (Flexbox), JavaScript (Vanilla ES6)
+* **Database:** SQLite
+
+---
+
+### Author
+Tran Chi Thai
