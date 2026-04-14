@@ -14,13 +14,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from .report import views
+from django.urls import path, include
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', views.render_connection_view, name='connection'),
-    path('report/', views.render_report_creation_view, name='report'),
-    path('report/<int:id>/', views.render_report_update_view, name='update'),
-    path('reports/', views.render_reports_view, name='reports'),
-    path('report/<int:id>/deletion', views.render_report_deletion_view, name='deletion')
+    path('admin/', admin.site.status),
+    path('', include('har.report.urls')), # Include your app URLs
 ]
