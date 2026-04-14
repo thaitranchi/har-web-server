@@ -2,17 +2,35 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>HAR - Connection</title>
     <link href="{% static 'css/connection.css' %}" rel="stylesheet" />
+    <meta charset="UTF-8">
 </head>
 <body class="connection-page">
-    <img src="{% static 'img/logo_har.2.0.png' %}" class="logo">
-    <form method="post">
-        {% csrf_token %}
-        {{ form.email }}
-        {{ form.password }}
-        {% if error %}<p class="error">{{ error }}</p>{% endif %}
-        <button type="submit">Connect</button>
-    </form>
-    <p>New here? An account will be created automatically.</p>
+    <div class="flex-container">
+        <img src="{% static 'img/logo_har.2.0.png' %}" class="logo" alt="Heritage at Risk">
+        
+        <form method="post" class="flex-container">
+            {% csrf_token %}
+            
+            {{ form.email }}
+            
+            <div class="password-wrapper">
+                {{ form.password }}
+                {# If you want to use that eye icon from your CSS #}
+                <div class="eye-box">
+                    <img src="{% static 'img/eye.png' %}" class="eye">
+                </div>
+            </div>
+
+            {% if error %}
+                <p class="error" style="color: yellow; font-weight: bold;">{{ error }}</p>
+            {% endif %}
+
+            <button type="submit" class="connect">Connect</button>
+        </form>
+
+        <p>New here? An account will be created automatically.</p>
+    </div>
 </body>
 </html>
