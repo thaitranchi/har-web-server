@@ -23,14 +23,17 @@ jobs:
     - name: Install Pipenv
       run: pip install pipenv
 
-    - name: Install Dependencies
-      run: pipenv sync --dev
-
-    - name: Check for Missing Migrations
-      run: |
-        pipenv run python manage.py makemigrations --check --dry-run
-      # This ensures you didn't forget to commit migration files
-
-    - name: Run Tests
-      run: |
-        pipenv run python manage.py test report
+  - name: Install Dependencies
+        run: |
+          pip install pipenv
+          # --deploy ensures the Pipfile.lock is up to date
+          # --dev includes testing tools like coverage or pytest
+          pipenv install --dev --deploy 
+  
+      - name: Check for Missing Migrations
+        run: |
+          pipenv run python manage.py makemigrations --check --dry-run
+  
+      - name: Run Tests
+        run: |
+          pipenv run python manage.py test report
