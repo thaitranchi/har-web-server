@@ -4,17 +4,18 @@
 }
 
 input {
-    width: 400px;
+    width: 100%;
     padding: 10px; /* Increased slightly for better touch/click area */
     border-radius: 4px;
     border: 1px solid #ccc;
     margin-bottom: 10px;
+    box-sizing: border-box;
 }
 
 .connect {
-    margin-top: 10px;
-    width: 400px; /* Matched to input width for symmetry */
-    padding: 12px;
+    margin: 10px auto 0; /* center the smaller button */
+    width: 180px; /* make button smaller than inputs */
+    padding: 8px 12px;
     border-radius: 5px;
     background: dodgerblue;
     color: white;
@@ -22,6 +23,8 @@ input {
     font-weight: bold;
     cursor: pointer;
     transition: background 0.3s;
+    font-size: 0.95rem;
+    display: block;
 }
 
 .connect:hover {
@@ -36,3 +39,94 @@ input {
     padding: 0;
     text-align: center;
 }
+
+/* Connection page specific layout and password eye positioning */
+.connection-page .flex-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    gap: 8px;
+    padding: 20px;
+}
+
+.connection-page .logo {
+    width: 150px;
+    height: auto;
+    margin-bottom: 18px;
+}
+
+/* Page background - enforce red site background for connection page */
+.connection-page {
+    background-color: rgb(236, 41, 66);
+    color: white;
+}
+
+form.flex-container {
+    align-items: center;
+}
+
+/* make inputs slightly narrower on the connection page and allow override of the global input rule */
+.connection-page input[type="email"],
+.connection-page input[type="password"],
+.connection-page input[type="text"] {
+    width: 100%;
+    padding: 10px 12px;
+    margin: 6px 0;
+    height: 40px; /* consistent control height so eye centers correctly */
+    line-height: 1.1;
+}
+
+.password-wrapper {
+    position: relative;
+    /* match the form/input width so the eye sits inside the same box */
+    width: var(--form-width);
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+}
+
+.password-wrapper input {
+    width: 100%;
+    padding-right: 52px; /* room for eye icon */
+    box-sizing: border-box;
+    height: 40px;
+    background: #fff; /* ensure eye sits over input background */
+}
+
+.eye-box {
+    position: absolute;
+    right: 12px; /* sit inside the input on the right */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    background: transparent;
+    pointer-events: auto;
+}
+
+.eye {
+    width: 20px;
+    height: 20px;
+    display:block;
+}
+
+.error {
+    color: yellow;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Forgot password alignment and small tweaks for connection form */
+.forgot-row { width: var(--form-width); max-width:100%; margin: 4px auto 0; text-align: right }
+.forgot { color: rgba(255,255,255,0.85); font-size: 0.9rem; text-decoration: none }
+.forgot:hover { text-decoration: underline }
+
+/* Ensure the connect button matches form width */
+.form-container .button { margin-top: 12px }

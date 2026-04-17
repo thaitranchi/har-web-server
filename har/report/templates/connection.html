@@ -4,33 +4,41 @@
 <head>
     <title>HAR - Connection</title>
     <link href="{% static 'css/connection.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/base.css' %}" rel="stylesheet" />
     <meta charset="UTF-8">
 </head>
 <body class="connection-page">
-    <div class="flex-container">
+    <div class="container">
         <img src="{% static 'img/logo_har.2.0.png' %}" class="logo" alt="Heritage at Risk">
-        
-        <form method="post" class="flex-container">
+        <div class="card">
+            <h2>Connect</h2>
+            <p>Don't have an account? We are creating one for you</p>
+        <form method="post" class="form-container">
             {% csrf_token %}
-            
-            {{ form.email }}
-            
-            <div class="password-wrapper">
-                {{ form.password }}
-                {# If you want to use that eye icon from your CSS #}
-                <div id="eye-box" class="eye-box" onclick="onClickEyeIcon()">
-                    <img src="{% static 'img/eye.png' %}" class="eye">
+                <div class="input-group">
+                    {{ form.email }}
+
+                    <div class="password-wrapper">
+                        {{ form.password }}
+                        <div id="eye-box" class="eye-box" onclick="onClickEyeIcon()">
+                            <img src="{% static 'img/ic_eye.png' %}" class="eye" data-eye="{% static 'img/ic_eye.png' %}" data-eye-slash="{% static 'img/ic_eye_slash.png' %}">
+                        </div>
+                    </div>
+
+                    <div class="forgot-row">
+                        <a href="#" class="forgot">Forgot password?</a>
+                    </div>
+
+                    {% if error %}
+                        <p class="error">{{ error }}</p>
+                    {% endif %}
+
+                    <button type="submit" class="button">Connect</button>
                 </div>
-            </div>
-
-            {% if error %}
-                <p class="error" style="color: yellow; font-weight: bold;">{{ error }}</p>
-            {% endif %}
-
-            <button type="submit" class="connect">Connect</button>
         </form>
-
-        <p>New here? An account will be created automatically.</p>
+        <p style="text-align:center; margin-top:10px;">New here? An account will be created automatically.</p>
+        </div>
     </div>
+    <script src="{% static 'js/connection.js' %}"></script>
 </body>
 </html>

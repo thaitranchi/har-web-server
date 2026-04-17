@@ -27,59 +27,77 @@ p {
 }
 
 /* The horizontal list item */
-.report-container { 
+.report-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: row; /* horizontal item */
     align-items: center;
-    width: 420px;
-    height: 60px; /* Increased height slightly for breathing room */
-    margin-top: 10px;
-    background-color: rgba(255, 255, 255, 0.1); /* Subtle background for list items */
-    padding: 5px 10px;
-    border-radius: 4px;
+    width: 420px; /* fixed width */
+    margin: 10px auto 0; /* center horizontally */
+    background-color: rgba(255, 255, 255, 0.02);
+    padding: 8px 12px;
+    border-radius: 6px;
+    gap: 12px;
 }
 
 .ic-heritage {
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     flex-shrink: 0;
 }
 
 .report-info {
-    padding-left: 10px;
-    width: 300px;
+    padding-left: 6px;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
+.report-actions{
+    display:flex;
+    gap:8px;
+    margin-left: auto; /* push actions to the right */
+    align-items:center;
+}
+
 /* Container for the action icons */
 .edit-button, .delete-button {
-    width: 24px;
-    height: 24px;
+    width: 30px;
+    height: 30px;
     cursor: pointer;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.1s;
+    transition: transform 0.12s;
+    background: transparent;
+    border-radius: 4px;
+    padding:2px;
 }
 
 .edit-button:hover, .delete-button:hover {
-    transform: scale(1.1);
+    transform: translateY(-1px);
 }
 
 .add-button {
-    margin-top: 30px;
-    width: 420px;
-    padding: 12px;
+    margin: 30px auto 0; /* center the smaller button */
+    width: 180px; /* smaller, matches other pages */
+    padding: 8px 12px;
     border-radius: 5px;
     background: dodgerblue;
     color: white;
     border: none;
     font-weight: bold;
     cursor: pointer;
+    display: block;
+    font-size: 0.95rem;
 }
 
 .add-button:hover {
     background: #1e70bf;
+}
+
+/* Ensure the action icons are the right size and don't overflow their container */
+.edit-icon, .delete-icon {
+    width: 18px;
+    height: 18px;
+    display: block;
 }

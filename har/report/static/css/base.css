@@ -1,0 +1,91 @@
+:root{
+    --brand-red: #ec2942;
+    --brand-blue: #1e70bf;
+    --accent: dodgerblue;
+    --page-padding: 20px;
+    --max-width: 760px;
+    --min-width: 320px;
+    --form-width: 360px;
+    --radius: 6px;
+}
+
+html,body{
+    height:100%;
+    margin:0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: var(--brand-red);
+    color: #fff;
+}
+
+.container{
+    max-width: var(--max-width);
+    min-width: var(--min-width);
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: var(--page-padding);
+    min-height: 100vh; /* ensure container fills viewport */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* vertical centering */
+    align-items: center; /* keep contents horizontally centered */
+}
+
+.card{
+    background: rgba(255,255,255,0.06);
+    border-radius: var(--radius);
+    padding: 14px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    width: 100%;
+}
+
+.logo{ display:block; margin: 18px auto; width:150px; height:auto }
+
+h1, h2{ margin: 8px 0 12px 0; font-weight:600 }
+
+input[type="text"], input[type="email"], input[type="password"], textarea, select{
+    width:100%;
+    max-width: var(--form-width);
+    padding:10px 12px;
+    border-radius:4px;
+    border:1px solid rgba(0,0,0,0.15);
+    outline:none;
+}
+
+.button{
+    display:inline-block;
+    background: var(--accent);
+    color:#fff;
+    padding:10px 14px;
+    border-radius:4px;
+    border:none;
+    cursor:pointer;
+    font-weight:600;
+}
+
+/* Buttons inside forms should match form width and be centered */
+.form-container .button, .container form .button {
+    display:block;
+    width: var(--form-width);
+    max-width:100%;
+    margin: 12px auto 0;
+}
+
+/* Generic form layout utilities shared across pages */
+.form-container { display:flex; flex-direction:column; align-items:center; gap:8px }
+.input-group { display:flex; flex-direction:column; gap:10px; width:100%; align-items:center }
+
+/* Constrain card headings/paragraphs to form width and left-align so they line up with inputs */
+.card h2, .card p { width:100%; max-width: var(--form-width); margin:0 auto 6px; text-align:left }
+
+.button.secondary{ background: transparent; border:1px solid rgba(255,255,255,0.2) }
+
+.row{ display:flex; gap:10px; align-items:center }
+.row.column{ flex-direction:column }
+
+.small{ width:180px; min-width:120px; max-width:220px }
+
+@media (max-width:600px){
+    .container{ padding:12px }
+    .small{ width:100% }
+}

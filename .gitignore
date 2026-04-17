@@ -6,6 +6,7 @@ __pycache__/
 env/
 venv/
 ENV/
+.python-version
 
 # --- Pipenv ---
 # We keep Pipfile and Pipfile.lock, but ignore the virtualenv

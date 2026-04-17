@@ -1,35 +1,41 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Heritage at Risk - Update Report</title>
-    <link href="{% static 'css/report_update.css' %}" rel="stylesheet"/>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heritage at Risk - Update Report</title>
+    <link href="{% static 'css/report_update.css' %}" rel="stylesheet">
+    <link href="{% static 'css/base.css' %}" rel="stylesheet">
 </head>
 <body class="report-page">
-    <div class="flex-container">
-        <img class="logo" src="{% static 'img/logo_har.2.0.png' %}" alt="Logo">
-        <p>Enter the information about an Heritage at Risk:</p>
-        
-        <form method="POST" class="flex-container">
-            {% csrf_token %}
+    <div class="container">
+        <img class="logo" src="{% static 'img/logo_har.2.0.png' %}" alt="Heritage at Risk Logo">
+        <div class="card">
+            <h2>Update Heritage at Risk</h2>
+            <p>Enter the information about a Heritage at Risk:</p>
             
-            {# Using form fields directly ensures existing data is prepopulated #}
-            <div class="input-group">
-                {{ form.name }}
-                {{ form.longitude }}
-                {{ form.latitude }}
-                {{ form.altitude }}
-                {{ form.accuracy }}
-            </div>
+            <form method="POST" class="form-container">
+                {% csrf_token %}
+                
+                <div class="input-group">
+                    {{ form.name }}
+                    {{ form.longitude }}
+                    {{ form.latitude }}
+                    {{ form.altitude }}
+                    {{ form.accuracy }}
+                </div>
 
-            <input class="connect" type="submit" value="Update"/>
-        </form>
+                <div style="text-align:center; margin-top:12px">
+                    <button class="button" type="submit">Update</button>
+                </div>
+            </form>
+        </div>
 
         {% if messages %}
             <ul class="messages">
                 {% for message in messages %}
-                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    <li class="{{ message.tags|default:'' }}">{{ message }}</li>
                 {% endfor %}
             </ul>
         {% endif %}
